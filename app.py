@@ -35,20 +35,25 @@ def show_exp():
 
 def summary_exp():
     summary = {}
+    total_amount = 0
     summaryexp = open(FILE_NAME, mode="r")
     reader = csv.reader(summaryexp)
     next(reader)
     # print(summaryexp)
     for row in reader:
         expence_cata = row[1]
-        expence_amount = float(row[2])
+        expence_amount = int(row[2])
 
         if expence_cata in summary:
             summary[expence_cata] += expence_amount
         else:
             summary[expence_cata] = expence_amount
 
+    
+        total_amount = expence_amount + total_amount
     print(summary)
+    print("Your Total Bill:-->",total_amount)
+
 
 
 while True:
